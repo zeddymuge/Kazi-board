@@ -1,0 +1,68 @@
+<style>
+     body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+     
+    }
+    .pat{
+        padding-left: 20px;
+        color:black;
+        
+    }
+
+    h2 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-align: center;
+    
+    }
+  
+     h3 b{
+      color: red; 
+      font-size: 20px;
+      margin-bottom: 5px;
+    
+    }
+  
+    p {
+       
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+  
+    b {
+        color: blue;
+      font-weight: bold;
+    }
+    .footer {
+      background-color: #f2f2f2;
+      padding: 10px;
+      text-align: center;
+      margin-top: 70%;
+    }
+    .apply-btn {
+      padding: 4px 1px;
+      font-size: 12px;
+      color: #4CAF50;
+      width: 5rem;
+    }
+  </style>
+  <%- include('partials/header'); -%>
+<h2>Job Details</h2>
+<div class="pat">
+    <h3><b>Job Name: </b><br><%= job.jobName %></h3>
+        <p><b>Descriptions</b><br>
+             <%= job.description %></p>
+        <p><b>Requirements:</b><br><%= job.requirement %></p>
+
+
+    </div><br>
+    <button class="apply-btn">Apply now</button>
+    
+<!-- Display other job details -->
+ <div class="footer">
+    <%- include('partials/footer'); -%>
+  </div>

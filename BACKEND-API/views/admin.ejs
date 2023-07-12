@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <!-- Add your CSS and JS dependencies here -->
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+
+    <h2>All Jobs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Job Name</th>
+                <th>Description</th>
+                <th>Requirement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% jobs.forEach(job => { %>
+            <tr>
+                <td><%= job.jobName %></td>
+                <td><%= job.description %></td>
+                <td><%= job.requirement %></td>
+                <td>
+                    <a href="/jobs/<%= job._id %>/edit">Edit</a>
+                    <form action="/jobs/<%= job._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this job?');">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <h2>Create New Job</h2>
+    <form action="/jobs" method="POST">
+        <label for="jobName">Job Name:</label>
+        <input type="text" id="jobName" name="jobName" required>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description">
+
+        <label for="requirement">Requirement:</label>
+        <input type="text" id="requirement" name="requirement" required>
+
+        <button type="submit">Create Job</button>
+    </form>
+</body>
+</html>

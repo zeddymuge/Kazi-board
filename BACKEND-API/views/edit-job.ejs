@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Job</title>
+</head>
+<body>
+    <h2>Edit Job</h2>
+
+    <form action="/jobs/<%= job._id %>" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        
+        <div>
+            <label for="jobName">Job Name</label>
+            <input type="text" id="jobName" name="jobName" value="<%= job.jobName %>" required>
+        </div>
+        
+        <div>
+            <label for="requirement">Requirements</label>
+            <textarea id="requirement" name="requirement" required><%= job.requirement %></textarea>
+        </div>
+        
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description" required><%= job.description %></textarea>
+        </div>
+        
+        <button type="submit">Update Job</button>
+    </form>
+</body>
+</html>
