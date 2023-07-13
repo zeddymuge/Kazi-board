@@ -11,13 +11,12 @@ const {
 } = require('../controllers/adminController');
 
 const router = express.Router();
-
 // Assuming you're using Express.js
-router.get('/jobs', getJobs);
-router.post('/jobs', createJob);
-router.get('/jobs/:id', getJob);
-router.get('/jobs/:id/edit', getEditJob);
-router.put('/jobs/:id', updateJob);
-router.delete('/jobs/:id', deleteJob);
+router.get('/', getJobs);
+router.post('/', createJob);
+router.get('/:id', getJob);
+router.get('/:id/edit', getEditJob);
+router.put('/:id', updateJob);
+router.delete('/:id', deleteJob);
 
 module.exports = router;

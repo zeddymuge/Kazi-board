@@ -3,10 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <!-- Add your CSS and JS dependencies here -->
+    <style>
+        body{
+            background-color: #19171A;
+            color: #E7E9F0;
+        }
+         body, h1, ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-decoration: none;
+     
+    }
+
+    /* Header styles */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #930a0a;
+      padding: 10px;
+      height:5rem;
+      
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+    }
+
+    li {
+      margin-left: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      background-color: #E7E9F0;
+     
+      border-radius: 4px;
+    }
+
+    form{
+        /* background-color: #930a0a; */
+    display: grid;
+    padding-left:  50px;
+    padding-right:  50px;
+    }
+    </style>
 </head>
 <body>
-    <h1>Admin Dashboard</h1>
+    <nav>
+        <h1><a href="/">Admin Dashboard</a></h1>
+        <ul>
+          <% if (user) { %>
+            <li><%= user.email %></li>
+            <li><a href="/logout" class="btn">Log out</a></li>
+          <% } else { %>
+            <li><a href="/login">Log in</a></li>
+            <li><a href="/signup" class="btn">Sign up</a></li>
+          <% } %>
+        </ul>
+      </nav>
+    
 
     <h2>All Jobs</h2>
     <table>
@@ -25,10 +92,10 @@
                 <td><%= job.description %></td>
                 <td><%= job.requirement %></td>
                 <td>
-                    <a href="/jobs/<%= job._id %>/edit">Edit</a>
-                    <form action="/jobs/<%= job._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this job?');">
-                        <button type="submit">Delete</button>
-                    </form>
+                  <a href="/jobs/<%= job._id %>/edit-job">Edit</a>
+                  <form action="/jobs/<%= job._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this job?');">
+                    <button type="submit">Delete</button>
+                </form>
                 </td>
             </tr>
             <% }); %>

@@ -7,3 +7,10 @@ body{
   letter-spacing: 1px;
   
 }
+.footer {
+  background-color: #051747;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+  color:white;
+}

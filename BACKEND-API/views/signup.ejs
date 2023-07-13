@@ -35,6 +35,10 @@
       width: 200px;
     }
 
+    select {
+      padding: 8px;
+      width: 200px;
+    }
     .error {
       color: red;
       margin-top: 5px;
@@ -51,7 +55,8 @@
     }
 
     .footer {
-      background-color: #f2f2f2;
+      background-color: #051747;
+      color: white;
       padding: 10px;
       text-align: center;
       margin-top: auto;
@@ -64,9 +69,17 @@
     <label for="email">Email </label>
     <input type="text" name="email"  />
     <div class="email error"></div>
+    
     <label for="password">Password</label>
     <input type="password" name="password"  />
     <div class="password error"></div>
+
+    <label for="role">Role</label>
+    <select name="role">
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+
     <button>Signup</button>
   </form>
 
@@ -91,6 +104,7 @@
     // get values
     const email = form.email.value;
     const password = form.password.value;
+    const role = form.role.value;
 
     try {
       const res = await fetch('/api/auth/signup', { 
@@ -105,9 +119,13 @@
         passwordError.textContent = data.errors.password;
       }
       if (data.user) {
-        location.assign('/login');
-      }
-
+  if (data.user.role === 'Admin') {
+    location.assign('/login');
+  } else {
+    location.assign('/login');
+  }
+}
+     
     }
     catch (err) {
       console.log(err);

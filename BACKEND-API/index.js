@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 8000;
 const MONGO_URL = process.env.MONGO_URL
 const users = []
 
+
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -40,7 +41,11 @@ app.get('/', (req, res) => res.render('home'));
 app.get('/jobs', requireAuth, (req,res) => {
     res.json(jobs);
 });
-app.use('/admin', adminRoute);
+app.get('/jobs/:id/edit', (req, res) => {
+    // Render the edit-job.ejs file or perform any necessary logic
+    res.render('edit-job', { jobId: req.params.id });
+  });
+app.use('/admin/jobs', adminRoute);
 app.use('/api/Jobs', jobRoute);
 app.use('/api/auth', authRoute);
 

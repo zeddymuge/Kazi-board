@@ -21,7 +21,8 @@ const getJob = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error('Job not found');
     }
-    res.render('job-details', { job });
+     res.render('edit-job', { job });
+    // res.status(200).json(job);
   } catch (error) {
     res.status(500);
     throw new Error(error.message);
@@ -37,7 +38,7 @@ const editJob = asyncHandler(async (req, res) => {
     if (!updatedJob) {
       return res.status(400).json({ message: `Cannot find the job with ID ${id}` });
     }
-    res.redirect(`/jobs/${id}`);
+    res.redirect(`/jobs/${id}/edit-job`);
   } catch (error) {
     res.status(500);
     throw new Error(error.message);

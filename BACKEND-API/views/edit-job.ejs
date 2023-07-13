@@ -3,29 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Job</title>
+    <style>
+        body {
+            background-color: #19171A;
+            color: #E7E9F0;
+        }
+
+        form {
+            display: grid;
+            padding: 20px;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #E7E9F0;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
     <h2>Edit Job</h2>
+    <form action="/jobs/<%= job._id %>?_method=PUT" method="POST">
+        <label for="jobName">Job Name:</label>
+        <input type="text" id="jobName" name="jobName" value="<%= job.jobName %>" required>
 
-    <form action="/jobs/<%= job._id %>" method="POST">
-        <input type="hidden" name="_method" value="PUT">
-        
-        <div>
-            <label for="jobName">Job Name</label>
-            <input type="text" id="jobName" name="jobName" value="<%= job.jobName %>" required>
-        </div>
-        
-        <div>
-            <label for="requirement">Requirements</label>
-            <textarea id="requirement" name="requirement" required><%= job.requirement %></textarea>
-        </div>
-        
-        <div>
-            <label for="description">Description</label>
-            <textarea id="description" name="description" required><%= job.description %></textarea>
-        </div>
-        
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="<%= job.description %>">
+
+        <label for="requirement">Requirement:</label>
+        <input type="text" id="requirement" name="requirement" value="<%= job.requirement %>" required>
+
         <button type="submit">Update Job</button>
     </form>
+    <a href="/jobs">Cancel</a>
 </body>
 </html>
